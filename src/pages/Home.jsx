@@ -176,21 +176,6 @@ export default function Home() {
               Dhaka, Bangladesh
             </div>
           </div>
-          <form className="contact-form" onSubmit={(e) => e.preventDefault()}>
-            <label style={{ color: "rgba(255,255,255,0.7)" }}>
-              Your Name
-              <input placeholder="Enter your name" />
-            </label>
-            <label style={{ color: "rgba(255,255,255,0.7)" }}>
-              Email or Phone
-              <input placeholder="contact@example.com" />
-            </label>
-            <label style={{ color: "rgba(255,255,255,0.7)" }}>
-              Message
-              <textarea placeholder="How can we help you?" />
-            </label>
-            <button className="btn primary">Send Message</button>
-          </form>
         </div>
       </section>
     </main>
