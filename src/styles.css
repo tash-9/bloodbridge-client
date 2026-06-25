@@ -338,16 +338,31 @@ label {
 .feature-card h3 { font-size: 1.1rem; font-weight: 800; margin-bottom: 0.6rem; color: var(--ink); }
 .feature-card p { color: var(--muted); line-height: 1.7; font-size: 0.95rem; }
 
-
-.steps-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; position: relative; }
-.step-card { text-align: center; }
+.steps-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.75rem;
+}
+.step-card {
+  text-align: center;
+  background: #fff;
+  border: 1.5px solid var(--line);
+  border-radius: var(--radius-lg);
+  padding: 2rem 1.5rem;
+  box-shadow: var(--shadow);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.step-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
 .step-number {
-  width: 60px;
-  height: 60px;
+  width: 56px;
+  height: 56px;
   border-radius: 50%;
   background: var(--red);
   color: #fff;
-  font-size: 1.4rem;
+  font-size: 1.35rem;
   font-weight: 900;
   display: flex;
   align-items: center;
@@ -355,7 +370,7 @@ label {
   margin: 0 auto 1.2rem;
   box-shadow: 0 4px 16px rgba(192, 37, 58, 0.3);
 }
-.step-card h3 { font-size: 1.05rem; font-weight: 800; margin-bottom: 0.5rem; }
+.step-card h3 { font-size: 1.05rem; font-weight: 800; margin-bottom: 0.6rem; color: var(--ink); }
 .step-card p { color: var(--muted); font-size: 0.92rem; line-height: 1.65; }
 
 
