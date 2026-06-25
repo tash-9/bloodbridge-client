@@ -155,7 +155,7 @@ export default function Home() {
 
       {//Contact 
       }
-      <section className="section contact-band">
+      <section className="section contact-band" id="contact">
         <div className="contact-inner">
           <div className="contact-info">
             <h2>Get in Touch</h2>

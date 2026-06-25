@@ -66,7 +66,7 @@ export default function Register() {
       delete data.avatarFile;
       delete data.confirm_password;
       await register(data);
-      navigate("/dashboard");
+      navigate("/");
     } catch (err) {
       toast.error(err.response?.data?.message || "Registration failed");
     } finally {

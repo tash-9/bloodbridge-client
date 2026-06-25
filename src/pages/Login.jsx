@@ -7,7 +7,7 @@ import { useAuth } from "../contexts/AuthContext";
 export default function Login() {
   const { login } = useAuth();
   const navigate = useNavigate();
-  const from = useLocation().state?.from || "/dashboard";
+  const from = useLocation().state?.from || "/";
   const [loading, setLoading] = useState(false);
 
   const submit = async (e) => {

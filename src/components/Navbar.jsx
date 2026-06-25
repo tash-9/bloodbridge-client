@@ -1,5 +1,5 @@
 import { Link, NavLink, useLocation } from "react-router-dom";
-import { HeartPulse, LayoutDashboard, LogOut } from "lucide-react";
+import { HeartPulse, LogOut, User } from "lucide-react";
 import { useAuth } from "../contexts/AuthContext";
 
 export default function Navbar() {
@@ -16,29 +16,32 @@ export default function Navbar() {
 
       <nav>
         <NavLink to="/donation-requests">Donation Requests</NavLink>
-        {user && <NavLink to="/funding">Funding</NavLink>}
+        {user && (
+          <>
+            <NavLink to="/funding">Funding</NavLink>
+            <NavLink to="/dashboard">Dashboard</NavLink>
+          </>
+        )}
 
-        {!user && !isAuthPage ? (
+        {!user && !isAuthPage && (
           <Link to="/login" className="btn primary" style={{ marginLeft: "0.5rem" }}>
             Login
           </Link>
-        ) : user ? (
+        )}
+
+        {user && (
           <div className="avatar-menu">
             <div className="avatar-trigger">
               <img className="avatar-img" src={user.avatar} alt={user.name} />
               <span>{user.name.split(" ")[0]}</span>
             </div>
             <div className="dropdown-menu">
-              <Link to="/dashboard">
-                <LayoutDashboard size={15} /> Dashboard
-              </Link>
+              <Link to="/dashboard/profile"><User size={15} /> Profile</Link>
               <div className="separator" />
-              <button onClick={logout}>
-                <LogOut size={15} /> Logout
-              </button>
+              <button onClick={logout}><LogOut size={15} /> Logout</button>
             </div>
           </div>
-        ) : null}
+        )}
       </nav>
     </header>
   );
