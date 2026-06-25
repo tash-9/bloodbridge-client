@@ -388,34 +388,25 @@ label {
   color: #fff;
 }
 .contact-inner {
-  display: grid;
-  grid-template-columns: 1fr 1.3fr;
-  gap: 4rem;
-  align-items: start;
-  max-width: 1100px;
-  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-.contact-info h2 { font-size: 2rem; font-weight: 900; margin-bottom: 0.75rem; letter-spacing: -0.02em; }
-.contact-info p { color: rgba(255, 255, 255, 0.7); line-height: 1.7; margin-bottom: 1.5rem; }
-.contact-detail { display: flex; align-items: center; gap: 0.6rem; color: rgba(255, 255, 255, 0.85); margin: 0.5rem 0; font-size: 0.95rem; }
-.contact-detail svg { color: #ffc7aa; flex-shrink: 0; }
-.contact-form {
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: var(--radius-lg);
-  padding: 2rem;
-  display: grid;
-  gap: 1rem;
+.contact-info {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
-.contact-form input, .contact-form textarea {
-  background: rgba(255, 255, 255, 0.08);
-  border-color: rgba(255, 255, 255, 0.18);
-  color: #fff;
+.contact-detail {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  justify-content: flex-start;
+  width: 300px;
 }
-.contact-form input::placeholder, .contact-form textarea::placeholder { color: rgba(255, 255, 255, 0.45); }
-.contact-form input:focus, .contact-form textarea:focus { border-color: #ffc7aa; box-shadow: 0 0 0 3px rgba(255, 199, 170, 0.15); }
-
-
+.contact-detail svg { color: #ffc7aa; flex-shrink: 0; width: 16px;
+ }
 .footer {
   background: #111827;
   color: rgba(255, 255, 255, 0.8);
