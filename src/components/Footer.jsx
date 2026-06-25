@@ -37,7 +37,6 @@ export default function Footer() {
       </div>
 
       <div className="footer-bottom">
-        <span style={{ flex: 1, textAlign: "center" }}>© {new Date().getFullYear()} BloodBridge. All rights reserved.</span>
         <div className="social-links">
           {/* Logo */}
           <a href="#" aria-label="X">
@@ -51,6 +50,7 @@ export default function Footer() {
             </svg>
           </a>
         </div>
+        <span>© {new Date().getFullYear()} BloodBridge. All rights reserved.</span>
       </div>
     </footer>
   );
