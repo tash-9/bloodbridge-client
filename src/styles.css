@@ -824,13 +824,12 @@ tr:hover td { background: var(--soft); }
 .not-found { min-height: calc(100vh - 66px); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1rem; text-align: center; padding: 2rem; }
 .not-found .big-num { font-size: 8rem; font-weight: 900; color: var(--red-mid); line-height: 1; }
 
-
 @media (max-width: 900px) {
   .feature-grid, .steps-grid, .contact-inner, .footer-inner { grid-template-columns: 1fr; }
-  .stats-strip { grid-template-columns: 1fr; }
-  .stats-strip .stat-item { border-right: none; border-bottom: 1px solid var(--line); }
-  .stats-strip .stat-item:last-child { border-bottom: none; }
-  .search-form { grid-template-columns: 1fr 1fr; }
+  .dashboard-wrapper { grid-template-columns: 1fr; }
+  .sidebar { display: none; }
+  .stat-cards { grid-template-columns: 1fr; }
+  .form-grid { grid-template-columns: 1fr; }
   .auth-grid { grid-template-columns: 1fr; }
 }
 @media (max-width: 720px) {
