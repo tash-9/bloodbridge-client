@@ -99,31 +99,69 @@ export default function Home() {
         </motion.div>
       </section>
 
-      {//Stat
-       }
-      <div className="stats-strip">
-        <div className="stat-item">
-          <strong>
-            <CountUp end={10000} duration={2} separator="," suffix="+" enableScrollSpy scrollSpyDelay={200} />
-          </strong>
-          <span>Registered Donors</span>
-        </div>
-        <div className="stat-item">
-          <strong>
-            <CountUp end={5000} duration={2} separator="," suffix="+" enableScrollSpy scrollSpyDelay={200} />
-          </strong>
-          <span>Lives Saved</span>
-        </div>
-        <div className="stat-item">
-          <strong>
-            <CountUp end={64} duration={2} enableScrollSpy scrollSpyDelay={200} />
-          </strong>
-          <span>Districts Covered</span>
-        </div>
-      </div>
+      {/* Stats Section */}
+      <section style={{ padding: "5rem 1.5rem", background: "#1a1f2e" }}>
+        <div style={{ maxWidth: 1100, margin: "0 auto" }}>
+          <div style={{ textAlign: "center", marginBottom: "3.5rem" }}>
+            <p style={{ fontSize: "0.75rem", fontWeight: 700, color: "#e53e3e", letterSpacing: "0.15em", textTransform: "uppercase", marginBottom: "0.5rem" }}>
+              PLATFORM HIGHLIGHTS
+            </p>
+            <h2 style={{ fontSize: "2.25rem", fontWeight: 800, color: "#fff", margin: 0 }}>
+              BloodBridge At a Glance
+            </h2>
+            <p style={{ color: "#9ca3af", marginTop: "0.75rem", fontSize: "0.95rem" }}>
+              A quick snapshot of donors, districts, and lives saved across Bangladesh.
+            </p>
+          </div>
 
-      {//Features
-      }
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: "1.5rem" }}>
+            {[
+              { Icon: Users, value: 10000, suffix: "+", label: "Registered Donors" },
+              { Icon: Droplets, value: 5000, suffix: "+", label: "Lives Saved" },
+              { Icon: MapPin, value: 64, suffix: "", label: "Districts Covered" },
+              { Icon: Activity, value: 98, suffix: "%", label: "Success Rate" },
+            ].map(({ Icon, value, suffix, label }) => (
+              <div
+                key={label}
+                style={{
+                  background: "#2c3347",
+                  borderRadius: 16,
+                  padding: "2rem",
+                  textAlign: "center",
+                  border: "1px solid #3d4561",
+                  transition: "all 0.2s",
+                  cursor: "default",
+                }}
+                onMouseEnter={e => {
+                  e.currentTarget.style.borderColor = "#e53e3e";
+                  e.currentTarget.style.transform = "translateY(-4px)";
+                }}
+                onMouseLeave={e => {
+                  e.currentTarget.style.borderColor = "#3d4561";
+                  e.currentTarget.style.transform = "translateY(0)";
+                }}
+              >
+                <div style={{
+                  width: 56, height: 56, borderRadius: 12,
+                  background: "rgba(229,62,62,0.15)",
+                  display: "flex", alignItems: "center", justifyContent: "center",
+                  margin: "0 auto 1.25rem",
+                }}>
+                  <Icon size={26} style={{ color: "#e53e3e" }} />
+                </div>
+                <h3 style={{ fontSize: "2.25rem", fontWeight: 800, color: "#fff", margin: 0 }}>
+                  <CountUp end={value} duration={2} separator="," suffix={suffix} enableScrollSpy scrollSpyDelay={200} />
+                </h3>
+                <p style={{ color: "#9ca3af", marginTop: "0.5rem", fontSize: "0.875rem" }}>
+                  {label}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Features */}
       <section className="section features-bg">
         <div className="section-header">
           <span className="section-label">Why BloodBridge</span>
@@ -185,8 +223,7 @@ export default function Home() {
         </div>
       </section>
 
-      {//Section
-      }
+      {/* Section */}
       <section className="section" style={{ background: "#fff" }}>
         <div className="section-header">
           <span className="section-label">How it works</span>
@@ -215,8 +252,7 @@ export default function Home() {
         </div>
       </section>
 
-      {//Contact 
-      }
+      {/* Contact */}
       <section className="section contact-band" id="contact">
         <div className="contact-inner" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "3rem", alignItems: "start", maxWidth: 900, margin: "0 auto" }}>
           <div className="contact-info">
