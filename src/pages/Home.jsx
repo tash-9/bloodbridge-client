@@ -13,19 +13,23 @@ function ContactForm() {
   const handleChange = (e) =>
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    if (!form.name || !form.email || !form.message) {
-      toast.error("Please fill in all fields.");
-      return;
-    }
-    setSending(true);
-    // Simulate send (replace with real API call if you have one)
-    await new Promise((r) => setTimeout(r, 800));
+const handleSubmit = async (e) => {
+  e.preventDefault();
+  if (!form.name || !form.email || !form.message) {
+    toast.error("Please fill in all fields.");
+    return;
+  }
+  setSending(true);
+  try {
+    await api.post("/contact", form);
     toast.success("Message sent! We'll get back to you soon.");
     setForm({ name: "", email: "", message: "" });
+  } catch {
+    toast.error("Failed to send message. Please try again.");
+  } finally {
     setSending(false);
-  };
+  }
+};
 
   return (
     <form onSubmit={handleSubmit} style={{ display: "grid", gap: "1rem" }}>
