@@ -109,7 +109,7 @@ export default function RequestTable({ requests, refresh, management = false }) 
                       </button>
                     )}
 
-                    {item.status === "inprogress" && user?.role !== "volunteer" && (
+                    {item.status === "inprogress" && user?.role !== "volunteer" && item.requesterEmail === user?.email && (
                       <>
                         <button
                           className="small-btn primary"

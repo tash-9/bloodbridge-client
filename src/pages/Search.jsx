@@ -62,26 +62,18 @@ export default function Search() {
       <form onSubmit={search} className="search-form">
         <label>
           Blood Group
-          <select
-            required
-            value={form.bloodGroup}
-            onChange={(e) => change("bloodGroup", e.target.value)}
-          >
+          <select required value={form.bloodGroup} onChange={(e) => change("bloodGroup", e.target.value)}>
             <option value="">Select blood group</option>
-            {bloodGroups.map((b) => (
+            {bloodGroups.map((b) => ( 
               <option key={b}>{b}</option>
             ))}
           </select>
         </label>
         <LocationFields
-          district={form.district}
-          upazila={form.upazila}
-          onChange={change}
-          required
-        />
+          district={form.district} upazila={form.upazila} onChange={change} />
         <button className="btn primary" disabled={loading}>
           <SearchIcon size={16} />
-          {loading ? "Searching…" : "Search"}
+          {loading ? "Searching..." : "Search"}
         </button>
       </form>
 

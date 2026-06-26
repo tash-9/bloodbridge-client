@@ -16,7 +16,7 @@ export default function Navbar() {
 
       <nav>
         <NavLink to="/donation-requests">Donation Requests</NavLink>
-
+        <NavLink to="/search">Search Donors</NavLink>
         {user && (
           <NavLink to="/funding">Funding</NavLink>
         )}
