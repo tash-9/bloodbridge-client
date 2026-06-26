@@ -113,7 +113,12 @@ export default function RequestDetails() {
                 <Droplets size={14} style={{ color: "var(--red)" }} /> Donor
               </dt>
               <dd>
-                <strong>{item.donorName}</strong>
+                <strong>{item.donorName || "Unknown"}</strong>
+                {item.donorEmail && (
+                  <span style={{ color: "var(--muted)", fontSize: "0.875rem", display: "block" }}>
+                    {item.donorEmail}
+                  </span>
+                )}
               </dd>
             </div>
           )}
