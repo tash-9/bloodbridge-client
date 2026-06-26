@@ -15,12 +15,10 @@ export default function Navbar() {
       </Link>
 
       <nav>
-        
+        <NavLink to="/donation-requests">Donation Requests</NavLink>
+
         {user && (
-          <>
-            <NavLink to="/funding">Funding</NavLink>
-            <NavLink to="/dashboard">Dashboard</NavLink>
-          </>
+          <NavLink to="/funding">Funding</NavLink>
         )}
 
         {!user && !isAuthPage && (
@@ -36,7 +34,7 @@ export default function Navbar() {
               <span>{user.name.split(" ")[0]}</span>
             </div>
             <div className="dropdown-menu">
-              <Link to="/dashboard"><User size={15} /> Dashboard</Link>  {/* add this */}
+              <Link to="/dashboard"><User size={15} /> Dashboard</Link>
               <Link to="/dashboard/profile"><User size={15} /> Profile</Link>
               <div className="separator" />
               <button onClick={logout}><LogOut size={15} /> Logout</button>
