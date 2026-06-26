@@ -8,6 +8,7 @@ import { motion } from "framer-motion";
 import api from "../../services/api";
 import { useAuth } from "../../contexts/AuthContext";
 import RequestTable from "../../components/RequestTable";
+import CountUp from "react-countup";
 
 const STATUS_COLORS = {
   pending: "#c7852f",
@@ -15,6 +16,9 @@ const STATUS_COLORS = {
   done: "#16a34a",
   canceled: "#94a3b8",
 };
+
+const valueStyle = { fontSize: "2.5rem", fontWeight: 900, color: "#1a2332", display: "block", lineHeight: 1.1 };
+const labelStyle = { fontSize: "1rem", fontWeight: 600, color: "#64748b", marginTop: "0.3rem", display: "block" };
 
 export default function DashboardHome() {
   const { user } = useAuth();
@@ -51,32 +55,53 @@ export default function DashboardHome() {
         </p>
       </motion.div>
 
-      {/* ── Admin & Volunteer: Stats + Chart ── */}
       {user.role !== "donor" && stats && (
-        <>
-          <div className="stat-cards">
-            <div className="stat-card">
-              <div className="stat-icon red"><Users size={22} /></div>
-              <div>
-                <strong>{stats.donors}</strong>
-                <span>Total Donors</span>
+        </*Stats*/>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "1.5rem", marginBottom: "1.5rem" }}>
+          {[
+            { Icon: Users, value: stats.donors, suffix: "", label: "Total Donors", color: "#e53e3e" },
+            { Icon: HandCoins, value: stats.funding, suffix: "", decimals: 2, prefix: "Tk ", label: "Total Funding", color: "#b45309" },
+            { Icon: Droplets, value: stats.requests, suffix: "", label: "Donation Requests", color: "#0d7490" },
+          ].map(({ Icon, value, suffix, decimals, prefix, label, color }) => (
+            <div
+              key={label}
+              style={{
+                background: "var(--paper)",
+                border: "1px solid #3d4561",
+                borderRadius: 16,
+                padding: "2rem",
+                textAlign: "center",
+                transition: "all 0.2s",
+                cursor: "default",
+                boxShadow: "var(--shadow-sm)",
+              }}
+              onMouseEnter={e => {
+                e.currentTarget.style.borderColor = color;
+                e.currentTarget.style.transform = "translateY(-4px)";
+              }}
+              onMouseLeave={e => {
+                e.currentTarget.style.borderColor = "#3d4561";
+                e.currentTarget.style.transform = "translateY(0)";
+              }}
+            >
+              <div style={{
+                width: 56, height: 56, borderRadius: 12,
+                background: `${color}22`,
+                display: "flex", alignItems: "center", justifyContent: "center",
+                margin: "0 auto 1.25rem",
+              }}>
+                <Icon size={26} style={{ color }} />
               </div>
+              <h3 style={{ fontSize: "2.25rem", fontWeight: 800, color: "var(--ink)", margin: 0 }}>
+                {prefix}
+                <CountUp end={value} duration={2} separator="," suffix={suffix} decimals={decimals || 0} enableScrollSpy scrollSpyDelay={100} />
+              </h3>
+              <p style={{ color: "var(--muted)", marginTop: "0.5rem", fontSize: "0.9rem", fontWeight: 600 }}>
+                {label}
+              </p>
             </div>
-            <div className="stat-card">
-              <div className="stat-icon gold"><HandCoins size={22} /></div>
-              <div>
-                <strong>${stats.funding.toFixed(2)}</strong>
-                <span>Total Funding</span>
-              </div>
-            </div>
-            <div className="stat-card">
-              <div className="stat-icon teal"><Droplets size={22} /></div>
-              <div>
-                <strong>{stats.requests}</strong>
-                <span>Donation Requests</span>
-              </div>
-            </div>
-          </div>
+          ))}
+        </div>
 
           <div className="chart-panel">
             <h2>Donation Requests by Status</h2>
@@ -99,7 +124,6 @@ export default function DashboardHome() {
         </>
       )}
 
-      {/* ── Donor: Recent requests ── */}
       {user.role === "donor" && !!recent.length && (
         <div>
           <div className="section-head">

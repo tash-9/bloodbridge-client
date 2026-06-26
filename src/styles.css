@@ -273,8 +273,6 @@ label {
   border-color: #fff;
   transform: translateY(-1px);
 }
-
-
 .stats-strip {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -668,7 +666,7 @@ tr:hover td { background: var(--soft); }
 .stat-card .stat-icon.red { background: var(--red-light); color: var(--red); }
 .stat-card .stat-icon.teal { background: var(--teal-light); color: var(--teal); }
 .stat-card .stat-icon.gold { background: var(--gold-light); color: var(--gold); }
-.stat-card strong { font-size: 1.9rem; font-weight: 900; color: var(--ink); display: block; }
+.stat-card strong { font-size: 3rem; font-weight: 900; color: var(--ink); display: block; }
 .stat-card span { font-size: 0.85rem; color: var(--muted); font-weight: 600; }
 
 
