@@ -28,8 +28,6 @@ export default function PublicRequests() {
         </Link>
       </div>
 
-      {loading && <div className="loader">Loading requests…</div>}
-
       {!loading && !items.length && (
         <div className="empty-state">
           <Droplets size={48} />
