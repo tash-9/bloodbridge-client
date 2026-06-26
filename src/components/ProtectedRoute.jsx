@@ -7,9 +7,7 @@ export default function ProtectedRoute({ roles, children }) {
 
   if (loading) {
     return (
-      <div className="loader">
-        <span>Loading secure session…</span>
-      </div>
+      <div className="loader"></div>
     );
   }
 
