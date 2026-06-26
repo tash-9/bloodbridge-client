@@ -3,6 +3,68 @@ import { motion } from "framer-motion";
 import { Activity, MapPin, ShieldCheck, Clock, Users, Droplets } from "lucide-react";
 import CountUp from "react-countup";
 
+import { useState } from "react";
+import toast from "react-hot-toast";
+
+function ContactForm() {
+  const [form, setForm] = useState({ name: "", email: "", message: "" });
+  const [sending, setSending] = useState(false);
+
+  const handleChange = (e) =>
+    setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (!form.name || !form.email || !form.message) {
+      toast.error("Please fill in all fields.");
+      return;
+    }
+    setSending(true);
+    // Simulate send (replace with real API call if you have one)
+    await new Promise((r) => setTimeout(r, 800));
+    toast.success("Message sent! We'll get back to you soon.");
+    setForm({ name: "", email: "", message: "" });
+    setSending(false);
+  };
+
+  return (
+    <form onSubmit={handleSubmit} style={{ display: "grid", gap: "1rem" }}>
+      <input
+        name="name"
+        placeholder="Your Name"
+        value={form.name}
+        onChange={handleChange}
+        required
+      />
+      <input
+        name="email"
+        type="email"
+        placeholder="Your Email"
+        value={form.email}
+        onChange={handleChange}
+        required
+      />
+      <textarea
+        name="message"
+        placeholder="Your Message"
+        rows={5}
+        value={form.message}
+        onChange={handleChange}
+        required
+        style={{ resize: "vertical" }}
+      />
+      <button
+        type="submit"
+        className="btn primary"
+        disabled={sending}
+        style={{ justifySelf: "start" }}
+      >
+        {sending ? "Sending…" : "Send Message"}
+      </button>
+    </form>
+  );
+}
+
 const fadeUp = { hidden: { opacity: 0, y: 24 }, show: { opacity: 1, y: 0 } };
 
 export default function Home() {
@@ -156,7 +218,7 @@ export default function Home() {
       {//Contact 
       }
       <section className="section contact-band" id="contact">
-        <div className="contact-inner">
+        <div className="contact-inner" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "3rem", alignItems: "start", maxWidth: 900, margin: "0 auto" }}>
           <div className="contact-info">
             <h2>Get in Touch</h2>
             <p>
@@ -176,6 +238,7 @@ export default function Home() {
               Dhaka, Bangladesh
             </div>
           </div>
+          <ContactForm />
         </div>
       </section>
     </main>
