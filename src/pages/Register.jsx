@@ -62,8 +62,12 @@ export default function Register() {
 
     setLoading(true);
     try {
-      data.avatar = `https://api.dicebear.com/7.x/initials/svg?seed=${encodeURIComponent(data.name)}`;
-      delete data.avatarFile;
+      let avatarUrl = `https://api.dicebear.com/7.x/initials/svg?seed=${encodeURIComponent(data.name)}`;
+      const avatarFile = raw.get("avatarFile");
+      if (avatarFile && avatarFile.size > 0) {
+        avatarUrl = await uploadAvatar(avatarFile);
+      }
+      data.avatar = avatarUrl;
       delete data.confirm_password;
       await register(data);
       navigate("/");
