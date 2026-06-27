@@ -226,6 +226,7 @@ label {
   background: var(--paper);
   z-index: 200;
   padding: 1.5rem;
+  padding-bottom: 3rem;
   display: flex;
   flex-direction: column;
   gap: 0.25rem;
@@ -280,6 +281,7 @@ label {
   margin-top: auto;
   padding-top: 1.5rem;
   border-top: 1px solid var(--line);
+  padding-bottom: 2rem;
 }
 
 /* Show hamburger only on mobile+ hide desktop nav */
@@ -945,7 +947,6 @@ html, body, #root {
   .hero { padding: 3rem 1.5rem; min-height: 70vh; }
   .hero h1 { font-size: 2.4rem; }
   .stat-cards { grid-template-columns: 1fr; }
-  .contact-info h2 { font-size: 1.35rem; }
   .search-form { grid-template-columns: 1fr; }
   .auth-card { padding: 1.5rem; }
   .auth-card.wide { width: 100%; }
