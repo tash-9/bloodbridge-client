@@ -24,9 +24,12 @@ export default function Navbar() {
           <NavLink to="/donation-requests">Donation Requests</NavLink>
           <NavLink to="/search">Search Donors</NavLink>
           {user && <NavLink to="/funding">Funding</NavLink>}
+        </nav>
 
+        {/* Right side */}
+        <div className="topbar-right">
           {!user && !isAuthPage && (
-            <Link to="/login" className="btn primary" style={{ marginLeft: "0.5rem" }}>
+            <Link to="/login" className="btn primary">
               Login
             </Link>
           )}
@@ -45,7 +48,7 @@ export default function Navbar() {
               </div>
             </div>
           )}
-        </nav>
+        </div>
 
         {/* Hamburger button */}
         <button
