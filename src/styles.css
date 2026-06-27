@@ -921,24 +921,42 @@ tr:hover td { background: var(--soft); }
 .not-found { min-height: calc(100vh - 66px); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1rem; text-align: center; padding: 2rem; }
 .not-found .big-num { font-size: 8rem; font-weight: 900; color: var(--red-mid); line-height: 1; }
 
+html, body, #root {
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
 @media (max-width: 900px) {
-  .feature-grid, .steps-grid, .contact-inner, .footer-inner { grid-template-columns: 1fr; }
-  .dashboard-wrapper { grid-template-columns: 1fr; }
-  .sidebar { display: none; }
-  .stat-cards { grid-template-columns: 1fr; }
+  .feature-grid { grid-template-columns: 1fr; }
+  .contact-inner { grid-template-columns: 1fr; gap: 2rem; }
+  .footer-inner { grid-template-columns: 1fr; gap: 1.5rem; }
+  .stat-cards { grid-template-columns: 1fr 1fr; }
   .form-grid { grid-template-columns: 1fr; }
   .auth-grid { grid-template-columns: 1fr; }
+  .search-form { grid-template-columns: 1fr 1fr; }
+  .dashboard-wrapper { grid-template-columns: 1fr; }
+  .sidebar { display: none; }
 }
+
 @media (max-width: 720px) {
-  .topbar { padding: 0 1rem; }
-  
-  .topbar nav > a {
-    padding: 0.45rem 0.85rem;
-    border-radius: 8px;
-    font-weight: 600;
-    color: var(--ink-soft);
-    transition: all 0.15s;
-  }
-  .topbar nav > a:hover { color: var(--red); 
-    background: var(--red-light); }
+  .topbar { padding: 0 1rem; height: 60px; }
+  .hamburger { display: flex !important; }
+  .desktop-nav { display: none !important; }
+  .hero { padding: 3rem 1.5rem; min-height: 70vh; }
+  .hero h1 { font-size: 2.4rem; }
+  .stat-cards { grid-template-columns: 1fr; }
+  .search-form { grid-template-columns: 1fr; }
+  .auth-card { padding: 1.5rem; }
+  .auth-card.wide { width: 100%; }
+  .details-card { padding: 1.25rem; }
+  .panel { padding: 1.25rem; }
+  .contact-inner { grid-template-columns: 1fr; gap: 1.5rem; }
+  .footer-inner { grid-template-columns: 1fr; gap: 1.5rem; }
+  .feature-grid { grid-template-columns: 1fr; }
+  .card-grid { grid-template-columns: 1fr; }
+  .request-grid { grid-template-columns: 1fr; }
+  .donor-grid { grid-template-columns: repeat(2, 1fr); }
+  .section { padding: 2.5rem 1.25rem; }
+  .page { padding: 1.25rem 1rem; }
+  .modal { padding: 1.5rem; }
 }
