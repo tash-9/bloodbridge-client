@@ -945,6 +945,7 @@ html, body, #root {
   .hero { padding: 3rem 1.5rem; min-height: 70vh; }
   .hero h1 { font-size: 2.4rem; }
   .stat-cards { grid-template-columns: 1fr; }
+  .contact-info h2 { font-size: 1.35rem; }
   .search-form { grid-template-columns: 1fr; }
   .auth-card { padding: 1.5rem; }
   .auth-card.wide { width: 100%; }
