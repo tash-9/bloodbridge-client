@@ -40,20 +40,25 @@ The client provides a responsive React application for users to:
 - Mobile, tablet, and desktop responsive layout
 - Auto-generated avatar using DiceBear
 - Image upload using ImgBB
+- Hamburger menu with slide-in drawer for mobile navigation
+- Mobile-responsive drawer with user profile, links, and logout
+- Fully responsive with hamburger drawer navigation for mobile devices
 
 ---
 
 ## Technologies Used
-- React
+- React 18
 - Vite
-- React Router DOM
-- Axios
-- Framer Motion
-- Stripe React SDK
-- Lucide React
-- Recharts
-- React Hot Toast
-- React CountUp
+- React Router DOM v6
+- Axios (with JWT interceptor)
+- Framer Motion (animations)
+- Stripe React SDK (payments)
+- Lucide React (icons)
+- Recharts (admin dashboard charts)
+- React Hot Toast (notifications)
+- React CountUp (animated statistics)
+- React Fast Marquee (testimonials carousel)
+- jsPDF (donor search PDF download)
 
 ## NPM Packages Used
 - react
@@ -70,6 +75,8 @@ The client provides a responsive React application for users to:
 - react-icons
 - animate.css
 - vite
+- react-fast-marquee
+- jspdf
 
 ---
 
