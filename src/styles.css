@@ -190,6 +190,103 @@ label {
 .dropdown-menu a:hover, .dropdown-menu button:hover { background: var(--red-light); color: var(--red-dark); }
 .dropdown-menu .separator { height: 1px; background: var(--line); margin: 0.3rem 0; }
 
+/* Hamburger / Mobile Drawer */
+.hamburger {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--ink);
+  padding: 0.4rem;
+  border-radius: 8px;
+  transition: background 0.15s;
+}
+.hamburger:hover { background: var(--soft); }
+
+.desktop-nav {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.mobile-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(26, 35, 50, 0.5);
+  z-index: 150;
+  backdrop-filter: blur(2px);
+}
+
+.mobile-drawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: min(300px, 80vw);
+  height: 100vh;
+  background: var(--paper);
+  z-index: 200;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  box-shadow: -8px 0 32px rgba(26, 35, 50, 0.15);
+  overflow-y: auto;
+}
+
+.drawer-profile {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem;
+  background: var(--red-light);
+  border-radius: var(--radius);
+  margin-bottom: 1rem;
+}
+.drawer-profile img {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--red-mid);
+}
+.drawer-profile strong {
+  display: block;
+  font-size: 0.95rem;
+  color: var(--ink);
+}
+.drawer-profile span {
+  font-size: 0.78rem;
+  color: var(--muted);
+}
+
+.mobile-drawer a {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.85rem 1rem;
+  border-radius: var(--radius);
+  color: var(--ink-soft);
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: all 0.15s;
+}
+.mobile-drawer a:hover,
+.mobile-drawer a.active {
+  background: var(--red-light);
+  color: var(--red-dark);
+}
+
+.drawer-bottom {
+  margin-top: auto;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--line);
+}
+
+/* Show hamburger only on mobile+ hide desktop nav */
+@media (max-width: 720px) {
+  .hamburger { display: flex; }
+  .desktop-nav { display: none; }
+}
 
 .hero {
   min-height: 88vh;
