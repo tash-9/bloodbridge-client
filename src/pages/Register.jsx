@@ -62,12 +62,17 @@ export default function Register() {
 
     setLoading(true);
     try {
-      let avatarUrl = `https://api.dicebear.com/7.x/initials/svg?seed=${encodeURIComponent(data.name)}`;
-      const avatarFile = raw.get("avatarFile");
-      if (avatarFile && avatarFile.size > 0) {
-        avatarUrl = await uploadAvatar(avatarFile);
+    let avatarUrl = `https://api.dicebear.com/7.x/initials/svg?seed=${encodeURIComponent(data.name)}`;
+    const avatarFile = raw.get("avatarFile");
+    if (avatarFile && avatarFile.size > 0) {
+      const uploaded = await uploadAvatar(avatarFile);
+      if (uploaded) {
+        avatarUrl = uploaded;
+      } else {
+        toast.error("Avatar upload failed — using default avatar instead.");
       }
-      data.avatar = avatarUrl;
+    }
+    data.avatar = avatarUrl;
       delete data.confirm_password;
       await register(data);
       navigate("/");
