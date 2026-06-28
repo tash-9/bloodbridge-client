@@ -6,7 +6,7 @@ import { HandCoins, PlusCircle, X } from "lucide-react";
 import api from "../services/api";
 
 const stripePromise = loadStripe(
-  import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY || "pk_test_replace_me"
+  import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY || ""
 );
 
 function FundModal({ onFunded, onClose }) {
