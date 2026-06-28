@@ -11,7 +11,7 @@ export default function DashboardLayout() {
     { to: "/dashboard", label: "Home", icon: Home, end: true, roles: ["donor", "admin", "volunteer"] },
     { to: "/dashboard/profile", label: "Profile", icon: User, roles: ["donor", "admin", "volunteer"] },
     { to: "/dashboard/my-donation-requests", label: "My Requests", icon: ClipboardList, roles: ["donor"] },
-    { to: "/dashboard/create-donation-request", label: "Create Request", icon: PlusCircle, roles: ["donor"] },
+    { to: "/dashboard/create-donation-request", label: "Create Request", icon: PlusCircle, roles: ["donor", "volunteer"] },
     { to: "/dashboard/all-users", label: "All Users", icon: Users, roles: ["admin"] },
     { to: "/dashboard/all-blood-donation-request", label: "All Requests", icon: LayoutDashboard, roles: ["admin", "volunteer"] },
   ].filter((l) => l.roles.includes(user.role));
