@@ -171,7 +171,17 @@ label {
   box-shadow: var(--shadow-lg);
   z-index: 200;
 }
-.avatar-menu:hover .dropdown-menu { display: flex; flex-direction: column; gap: 0.2rem; }
+.avatar-menu:hover .dropdown-menu,
+.avatar-menu:focus-within .dropdown-menu { display: flex; flex-direction: column; gap: 0.2rem; }
+.avatar-menu::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  height: 8px;
+}
+
 .dropdown-menu a, .dropdown-menu button {
   display: flex;
   align-items: center;
@@ -283,14 +293,6 @@ label {
   padding-top: 1.5rem;
   border-top: 1px solid var(--line);
   padding-bottom: 2rem;
-}
-
-/* Show hamburger only on mobile+ hide desktop nav */
-@media (max-width: 720px) {
-  .topbar { padding: 0 1rem; height: 60px; }
-  .hamburger { display: flex; }
-  .desktop-nav { display: none; }
-  .topbar-right { display: none !important; }
 }
 
 .hero {
