@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { jsPDF } from "jspdf";
 import { Search as SearchIcon, Download, Droplets } from "lucide-react";
 import { motion } from "framer-motion";
@@ -11,6 +11,14 @@ export default function Search() {
   const [donors, setDonors] = useState([]);
   const [searched, setSearched] = useState(false);
   const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    api.get("/users/search", { params: {} })
+      .then(({ data }) => {
+        setDonors(data);
+        setSearched(true);
+      });
+  }, []);
 
   const change = (key, value) =>
     setForm((prev) => ({
@@ -62,9 +70,9 @@ export default function Search() {
       <form onSubmit={search} className="search-form">
         <label>
           Blood Group
-          <select required value={form.bloodGroup} onChange={(e) => change("bloodGroup", e.target.value)}>
+          <select value={form.bloodGroup} onChange={(e) => change("bloodGroup", e.target.value)}>
             <option value="">Select blood group</option>
-            {bloodGroups.map((b) => ( 
+            {bloodGroups.map((b) => (
               <option key={b}>{b}</option>
             ))}
           </select>
