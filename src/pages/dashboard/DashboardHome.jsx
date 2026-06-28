@@ -60,7 +60,7 @@ export default function DashboardHome() {
         <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "1.5rem", marginBottom: "1.5rem" }}>
           {[
             { Icon: Users, value: stats.donors, suffix: "", label: "Total Donors", color: "#e53e3e" },
-            { Icon: HandCoins, value: stats.funding, suffix: "", decimals: 2, prefix: "Tk ", label: "Total Funding", color: "#b45309" },
+            { Icon: HandCoins, value: stats.funding, suffix: "", decimals: 2, prefix: "$ ", label: "Total Funding", color: "#b45309" },
             { Icon: Droplets, value: stats.requests, suffix: "", label: "Donation Requests", color: "#0d7490" },
           ].map(({ Icon, value, suffix, decimals, prefix, label, color }) => (
             <div
