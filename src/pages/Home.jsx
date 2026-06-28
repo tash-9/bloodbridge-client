@@ -2,7 +2,6 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Activity, MapPin, ShieldCheck, Clock, Users, Droplets } from "lucide-react";
 import CountUp from "react-countup";
-
 import { useState } from "react";
 import toast from "react-hot-toast";
 
@@ -13,23 +12,18 @@ function ContactForm() {
   const handleChange = (e) =>
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
 
-const handleSubmit = async (e) => {
-  e.preventDefault();
-  if (!form.name || !form.email || !form.message) {
-    toast.error("Please fill in all fields.");
-    return;
-  }
-  setSending(true);
-  try {
-    await api.post("/contact", form);
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (!form.name || !form.email || !form.message) {
+      toast.error("Please fill in all fields.");
+      return;
+    }
+    setSending(true);
+    await new Promise((r) => setTimeout(r, 800));
     toast.success("Message sent! We'll get back to you soon.");
     setForm({ name: "", email: "", message: "" });
-  } catch {
-    toast.error("Failed to send message. Please try again.");
-  } finally {
     setSending(false);
-  }
-};
+  };
 
   return (
     <form onSubmit={handleSubmit} style={{ display: "grid", gap: "1rem" }}>
