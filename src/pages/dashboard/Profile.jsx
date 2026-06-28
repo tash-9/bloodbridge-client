@@ -93,15 +93,44 @@ export default function Profile() {
             Email Address
             <input disabled value={form.email} />
           </label>
-          <label className="full">
-            Avatar URL
-            <input
-              disabled={!editable}
-              value={form.avatar}
-              onChange={(e) => change("avatar", e.target.value)}
-              placeholder="https://..."
-            />
-          </label>
+          <div className="full" style={{ display: "grid", gap: "0.5rem" }}>
+                      <label>
+                        Avatar URL
+                        <input
+                          disabled={!editable}
+                          value={form.avatar}
+                          onChange={(e) => change("avatar", e.target.value)}
+                          placeholder="https://..."
+                        />
+                      </label>
+
+                      {editable && (
+                        <label>
+                          Upload New Avatar
+                        <input type="file" accept="image/*" onChange={async (e) => {
+                            const file = e.target.files[0];
+                            if (!file) return;
+                            const key = import.meta.env.VITE_IMGBB_API_KEY;
+                            if (!key) return toast.error("ImgBB key not configured");
+                            const body = new FormData();
+                            body.append("image", file);
+                            try {
+                              const res = await fetch(`https://api.imgbb.com/1/upload?key=${key}`, { method: "POST", body });
+                              const json = await res.json();
+                              if (json.data?.url) {
+                                change("avatar", json.data.url);
+                                toast.success("Image uploaded!");
+                              } else {
+                                toast.error("Upload failed");
+                              }
+                            } catch {
+                              toast.error("Upload failed");
+                            }
+                          }}
+                        />
+                      </label>
+                    )}
+                  </div>
           <label>
             Blood Group
             <select
